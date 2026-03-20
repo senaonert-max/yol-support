@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YOL | Destek</title>
+  <title>YOL | Manevi Takip Uygulaması</title>
   <style>
     :root{
       --bg:#f7f3ee;
       --card:#ffffff;
       --primary:#0f766e;
+      --primary-dark:#0b5f59;
       --text:#1f2937;
       --muted:#6b7280;
       --border:#d9e3df;
@@ -25,69 +26,72 @@
     }
 
     .wrap{
-      max-width:920px;
+      max-width:1100px;
       margin:0 auto;
-      padding:40px 20px 60px;
+      padding:32px 20px 60px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      font-size:30px;
+      font-weight:800;
+      color:var(--primary);
+      text-decoration:none;
+    }
+
+    .nav{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .nav a{
+      text-decoration:none;
+      color:var(--text);
+      font-weight:600;
     }
 
     .hero{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:50px 28px;
       text-align:center;
-      padding:20px 0 10px;
+      box-shadow:0 10px 28px rgba(0,0,0,0.04);
     }
 
     .moon{
-      font-size:58px;
-      margin-bottom:8px;
+      font-size:60px;
+      margin-bottom:10px;
     }
 
     h1{
       margin:0;
-      font-size:44px;
+      font-size:46px;
       color:var(--primary);
     }
 
     .subtitle{
-      margin:16px auto 0;
       max-width:760px;
+      margin:18px auto 0;
       font-size:20px;
       color:var(--muted);
     }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:24px 20px;
-      margin-top:20px;
-      box-shadow:0 8px 24px rgba(0,0,0,0.04);
-    }
-
-    h2{
-      margin:0 0 12px;
-      color:var(--primary);
-      font-size:24px;
-    }
-
-    p{
-      margin:0;
-    }
-
-    ul{
-      margin:0;
-      padding-left:22px;
-      text-align:left;
-    }
-
-    li{
-      margin-bottom:8px;
-    }
-
-    .buttons{
-      margin-top:18px;
+    .hero-buttons{
       display:flex;
       justify-content:center;
+      gap:14px;
       flex-wrap:wrap;
-      gap:12px;
+      margin-top:28px;
     }
 
     .btn{
@@ -95,99 +99,244 @@
       padding:14px 22px;
       border-radius:12px;
       text-decoration:none;
-      color:#fff;
-      font-weight:bold;
-      min-width:180px;
+      font-weight:700;
+      min-width:190px;
+      transition:0.2s ease;
     }
 
-    .btn-dark{background:#111827;}
-    .btn-green{background:var(--primary);}
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+    }
 
-    .mail{
-      font-weight:bold;
+    .btn-primary:hover{
+      background:var(--primary-dark);
+    }
+
+    .btn-secondary{
+      background:#111827;
+      color:#fff;
+    }
+
+    .section{
+      margin-top:28px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px 18px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .card h2,
+    .card h3{
+      margin-top:0;
       color:var(--primary);
-      word-break:break-word;
+    }
+
+    .feature-icon{
+      font-size:28px;
+      margin-bottom:8px;
+    }
+
+    .wide-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:24px 20px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .screens{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+      margin-top:14px;
+    }
+
+    .screen-box{
+      border:1px dashed var(--border);
+      border-radius:16px;
+      background:#fbfbfb;
+      padding:28px 16px;
+      text-align:center;
+      color:var(--muted);
+      font-weight:600;
+      min-height:120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .links{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .link-box{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px 14px;
+      text-align:center;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      box-shadow:0 6px 20px rgba(0,0,0,0.03);
+    }
+
+    .link-box span{
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:500;
     }
 
     .footer{
-      margin-top:26px;
       text-align:center;
       color:var(--muted);
       font-size:14px;
+      margin-top:30px;
     }
 
-    @media (max-width:640px){
-      h1{font-size:34px;}
-      .subtitle{font-size:17px;}
-      .card{padding:20px 16px;}
+    @media (max-width: 900px){
+      .grid,
+      .screens,
+      .links{
+        grid-template-columns:1fr 1fr;
+      }
+
+      h1{
+        font-size:38px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .grid,
+      .screens,
+      .links{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding:38px 20px;
+      }
+
+      h1{
+        font-size:32px;
+      }
+
+      .subtitle{
+        font-size:17px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
 
+    <div class="topbar">
+      <a class="brand" href="index.html">YOL</a>
+      <div class="nav">
+        <a href="support.html">Destek</a>
+        <a href="privacy.html">Gizlilik</a>
+        <a href="terms.html">Kullanım Şartları</a>
+        <a href="contact.html">İletişim</a>
+      </div>
+    </div>
+
     <section class="hero">
       <div class="moon">🌙</div>
       <h1>YOL</h1>
       <p class="subtitle">
-        Bu yol bir hatırlayıştır. YOL, manevi takibini daha sade, düzenli ve huzurlu
-        şekilde sürdürebilmen için hazırlanmış bir yol arkadaşlığı uygulamasıdır.
+        Bu yol bir hatırlayıştır. YOL, rabıta, zikir, murakabe ve günlük manevi
+        takibini daha sade, düzenli ve huzurlu şekilde sürdürebilmen için tasarlanmış
+        bir manevi takip uygulamasıdır.
       </p>
-    </section>
 
-    <section class="card">
-      <h2>Uygulama Hakkında</h2>
-      <p>
-        YOL; rabıta, zikir, murakabe, ders takibi, sayaç, oku &amp; ezberle,
-        günlük notlar ve kişisel takip alanlarını tek bir yerde toplar.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Öne Çıkan Özellikler</h2>
-      <ul>
-        <li>Ders Takip ekranı</li>
-        <li>Rabıta, zikir ve murakabe sayaçları</li>
-        <li>Zikirmatik</li>
-        <li>Oku &amp; Ezberle alanı</li>
-        <li>Risale-i Kudsiye ve Altın Silsile içerikleri</li>
-        <li>Günlük notlar, hedefler ve istatistik görünümü</li>
-        <li>Hatırlatıcı ve düzenli takip desteği</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>İndir</h2>
-      <p>Mağaza bağlantıları yayın sonrası burada yer alacaktır.</p>
-      <div class="buttons">
-        <a class="btn btn-dark" href="#">App Store Yakında</a>
-        <a class="btn btn-green" href="#">Google Play Yakında</a>
+      <div class="hero-buttons">
+        <a class="btn btn-secondary" href="#">App Store Yakında</a>
+        <a class="btn btn-primary" href="#">Google Play Yakında</a>
       </div>
     </section>
 
-    <section class="card">
-      <h2>Destek ve İletişim</h2>
+    <section class="section grid">
+      <div class="card">
+        <div class="feature-icon">📿</div>
+        <h3>Rabıta • Zikir • Murakabe</h3>
+        <p>Günlük manevi takibini daha düzenli ve istikrarlı şekilde sürdürebilmen için tasarlanmıştır.</p>
+      </div>
+
+      <div class="card">
+        <div class="feature-icon">📚</div>
+        <h3>Oku &amp; Ezberle</h3>
+        <p>Kur’an-ı Kerim, günlük dualar ve salavat içeriklerini takip edip tekrar edebilirsin.</p>
+      </div>
+
+      <div class="card">
+        <div class="feature-icon">📝</div>
+        <h3>Notlar ve Kişisel Alanlar</h3>
+        <p>Günlük notlarını, hedeflerini ve kişisel takip alanlarını tek bir yerde düzenleyebilirsin.</p>
+      </div>
+    </section>
+
+    <section class="section wide-card">
+      <h2>Öne Çıkan Özellikler</h2>
       <p>
-        Uygulama ile ilgili öneri, hata bildirimi veya destek taleplerin için:
-      </p>
-      <p style="margin-top:12px;" class="mail">
-        destek@yolapp.com.tr
-      </p>
-      <p style="margin-top:12px;">
-        Mesajında mümkünse kullandığın cihazı ve yaşadığın durumu kısa şekilde belirt.
+        Ders Takip, sayaç sistemi, zikirmatik, günlük dualar, Risale-i Kudsiye,
+        Altın Silsile, istatistik görünümü ve kişisel alanlar ile YOL uygulaması
+        sade ama güçlü bir kullanım deneyimi sunar.
       </p>
     </section>
 
-    <section class="card">
-      <h2>Gizlilik</h2>
-      <p>
-        YOL, kullanıcı deneyimini sade ve güvenli tutmayı amaçlar. Uygulama içeriği
-        zaman içinde geliştirilebilir ve güncellenebilir.
-      </p>
+    <section class="section wide-card">
+      <h2>Ekran Görüntüleri</h2>
+      <p>Uygulama mağaza bağlantıları aktif olduğunda gerçek ekran görüntüleri buraya eklenecek.</p>
+
+      <div class="screens">
+        <div class="screen-box">Ana Menü Görseli</div>
+        <div class="screen-box">Ders Takip Görseli</div>
+        <div class="screen-box">Sayaç / Zikir Görseli</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="links">
+        <a class="link-box" href="support.html">
+          Destek
+          <span>Sık sorulan sorular ve yardım</span>
+        </a>
+
+        <a class="link-box" href="privacy.html">
+          Gizlilik
+          <span>Gizlilik politikası</span>
+        </a>
+
+        <a class="link-box" href="terms.html">
+          Şartlar
+          <span>Kullanım koşulları</span>
+        </a>
+
+        <a class="link-box" href="contact.html">
+          İletişim
+          <span>destek@yolapp.com.tr</span>
+        </a>
+      </div>
     </section>
 
     <div class="footer">
-      © 2026 YOL
+      © 2026 YOL • yolapp.com.tr
     </div>
 
   </div>
