@@ -1,128 +1,195 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOL | Destek</title>
+  <style>
+    :root{
+      --bg:#f7f3ee;
+      --card:#ffffff;
+      --primary:#0f766e;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --border:#d9e3df;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    *{box-sizing:border-box;}
 
-<title>YOL App</title>
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
 
-<style>
+    .wrap{
+      max-width:920px;
+      margin:0 auto;
+      padding:40px 20px 60px;
+    }
 
-body{
-font-family:Arial, Helvetica, sans-serif;
-margin:0;
-background:#f4f6f8;
-color:#333;
-text-align:center;
-}
+    .hero{
+      text-align:center;
+      padding:20px 0 10px;
+    }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:80px 20px;
-}
+    .moon{
+      font-size:58px;
+      margin-bottom:8px;
+    }
 
-.logo{
-font-size:60px;
-font-weight:bold;
-color:#2c3e50;
-}
+    h1{
+      margin:0;
+      font-size:44px;
+      color:var(--primary);
+    }
 
-.subtitle{
-font-size:22px;
-margin-top:15px;
-color:#666;
-}
+    .subtitle{
+      margin:16px auto 0;
+      max-width:760px;
+      font-size:20px;
+      color:var(--muted);
+    }
 
-.description{
-margin-top:30px;
-font-size:18px;
-line-height:1.6;
-}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:24px 20px;
+      margin-top:20px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.04);
+    }
 
-.buttons{
-margin-top:50px;
-}
+    h2{
+      margin:0 0 12px;
+      color:var(--primary);
+      font-size:24px;
+    }
 
-.button{
-display:inline-block;
-padding:15px 30px;
-margin:10px;
-font-size:18px;
-border-radius:8px;
-text-decoration:none;
-color:white;
-}
+    p{
+      margin:0;
+    }
 
-.appstore{
-background:black;
-}
+    ul{
+      margin:0;
+      padding-left:22px;
+      text-align:left;
+    }
 
-.playstore{
-background:#2ecc71;
-}
+    li{
+      margin-bottom:8px;
+    }
 
-.section{
-margin-top:80px;
-}
+    .buttons{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
 
-.footer{
-margin-top:100px;
-font-size:14px;
-color:#777;
-}
+    .btn{
+      display:inline-block;
+      padding:14px 22px;
+      border-radius:12px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:bold;
+      min-width:180px;
+    }
 
-</style>
+    .btn-dark{background:#111827;}
+    .btn-green{background:var(--primary);}
 
+    .mail{
+      font-weight:bold;
+      color:var(--primary);
+      word-break:break-word;
+    }
+
+    .footer{
+      margin-top:26px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    @media (max-width:640px){
+      h1{font-size:34px;}
+      .subtitle{font-size:17px;}
+      .card{padding:20px 16px;}
+    }
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
 
-<div class="container">
+    <section class="hero">
+      <div class="moon">🌙</div>
+      <h1>YOL</h1>
+      <p class="subtitle">
+        Bu yol bir hatırlayıştır. YOL, manevi takibini daha sade, düzenli ve huzurlu
+        şekilde sürdürebilmen için hazırlanmış bir yol arkadaşlığı uygulamasıdır.
+      </p>
+    </section>
 
-<div class="logo">
-YOL
-</div>
+    <section class="card">
+      <h2>Uygulama Hakkında</h2>
+      <p>
+        YOL; rabıta, zikir, murakabe, ders takibi, sayaç, oku &amp; ezberle,
+        günlük notlar ve kişisel takip alanlarını tek bir yerde toplar.
+      </p>
+    </section>
 
-<div class="subtitle">
-Manevi yolculuğunu takip et
-</div>
+    <section class="card">
+      <h2>Öne Çıkan Özellikler</h2>
+      <ul>
+        <li>Ders Takip ekranı</li>
+        <li>Rabıta, zikir ve murakabe sayaçları</li>
+        <li>Zikirmatik</li>
+        <li>Oku &amp; Ezberle alanı</li>
+        <li>Risale-i Kudsiye ve Altın Silsile içerikleri</li>
+        <li>Günlük notlar, hedefler ve istatistik görünümü</li>
+        <li>Hatırlatıcı ve düzenli takip desteği</li>
+      </ul>
+    </section>
 
-<div class="description">
-YOL uygulaması; rabıta, zikir, murakabe ve manevi gelişim takibini
-daha düzenli ve bilinçli şekilde yapabilmen için tasarlanmıştır.
-</div>
+    <section class="card">
+      <h2>İndir</h2>
+      <p>Mağaza bağlantıları yayın sonrası burada yer alacaktır.</p>
+      <div class="buttons">
+        <a class="btn btn-dark" href="#">App Store Yakında</a>
+        <a class="btn btn-green" href="#">Google Play Yakında</a>
+      </div>
+    </section>
 
-<div class="buttons">
+    <section class="card">
+      <h2>Destek ve İletişim</h2>
+      <p>
+        Uygulama ile ilgili öneri, hata bildirimi veya destek taleplerin için:
+      </p>
+      <p style="margin-top:12px;" class="mail">
+        destek@yolapp.com.tr
+      </p>
+      <p style="margin-top:12px;">
+        Mesajında mümkünse kullandığın cihazı ve yaşadığın durumu kısa şekilde belirt.
+      </p>
+    </section>
 
-<a class="button appstore" href="#">
-App Store (Yakında)
-</a>
+    <section class="card">
+      <h2>Gizlilik</h2>
+      <p>
+        YOL, kullanıcı deneyimini sade ve güvenli tutmayı amaçlar. Uygulama içeriği
+        zaman içinde geliştirilebilir ve güncellenebilir.
+      </p>
+    </section>
 
-<a class="button playstore" href="#">
-Google Play (Yakında)
-</a>
+    <div class="footer">
+      © 2026 YOL
+    </div>
 
-</div>
-
-<div class="section">
-
-<h2>İletişim</h2>
-
-<p>
-destek@yolapp.com.tr
-</p>
-
-</div>
-
-<div class="footer">
-
-© 2026 YOL App
-
-</div>
-
-</div>
-
+  </div>
 </body>
 </html>
