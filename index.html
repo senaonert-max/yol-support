@@ -1,532 +1,568 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YOL | Manevi Takip Uygulaması</title>
-  <meta name="description" content="YOL uygulaması rabıta, zikir, murakabe ve manevi takip için geliştirilmiş sade ve düzenli bir mobil uygulamadır.">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/833/833472.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOL | Manevi Takip Uygulaması</title>
 
-  <style>
-    :root{
-      --bg:#f7f3ee;
-      --card:#ffffff;
-      --primary:#0f766e;
-      --primary-dark:#0b5f59;
-      --text:#1f2937;
-      --muted:#6b7280;
-      --border:#d9e3df;
-      --soft:#eef7f5;
-    }
+<meta name="description" content="YOL uygulaması rabıta, zikir, murakabe ve manevi takip için geliştirilmiş sade ve düzenli bir mobil uygulamadır.">
 
-    *{box-sizing:border-box;}
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/833/833472.png">
 
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,#faf7f2 0%, #f4f7f6 100%);
-      color:var(--text);
-      line-height:1.6;
-    }
+<style>
 
-    .wrap{
-      max-width:1120px;
-      margin:0 auto;
-      padding:28px 20px 60px;
-    }
+:root{
+--bg:#f7f3ee;
+--card:#ffffff;
+--primary:#0f766e;
+--primary-dark:#0b5f59;
+--text:#1f2937;
+--muted:#6b7280;
+--border:#d9e3df;
+--soft:#eef7f5;
+}
 
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      margin-bottom:28px;
-      flex-wrap:wrap;
-    }
+*{box-sizing:border-box;}
 
-    .brand{
-      font-size:30px;
-      font-weight:800;
-      color:var(--primary);
-      text-decoration:none;
-      letter-spacing:0.3px;
-    }
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:linear-gradient(180deg,#faf7f2 0%, #f4f7f6 100%);
+color:var(--text);
+line-height:1.6;
+}
 
-    .nav{
-      display:flex;
-      gap:16px;
-      flex-wrap:wrap;
-    }
+.wrap{
+max-width:1120px;
+margin:0 auto;
+padding:28px 20px 60px;
+}
 
-    .nav a{
-      text-decoration:none;
-      color:var(--text);
-      font-weight:600;
-      padding:8px 10px;
-      border-radius:10px;
-    }
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:16px;
+margin-bottom:28px;
+flex-wrap:wrap;
+}
 
-    .nav a:hover{
-      background:#ffffff;
-    }
+.brand{
+font-size:30px;
+font-weight:800;
+color:var(--primary);
+text-decoration:none;
+letter-spacing:0.3px;
+}
 
-    .hero{
-      display:grid;
-      grid-template-columns:1.2fr 0.8fr;
-      gap:20px;
-      align-items:stretch;
-    }
+.nav{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
 
-    .hero-main,
-    .hero-side,
-    .card,
-    .wide-card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:24px;
-      box-shadow:0 10px 28px rgba(0,0,0,0.04);
-    }
+.nav a{
+text-decoration:none;
+color:var(--text);
+font-weight:600;
+padding:8px 10px;
+border-radius:10px;
+}
 
-    .hero-main{
-      padding:44px 28px;
-    }
+.nav a:hover{
+background:#ffffff;
+}
 
-    .hero-side{
-      padding:24px 22px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      text-align:center;
-      background:linear-gradient(180deg,#ffffff 0%, #f3fbf8 100%);
-    }
+.hero{
+display:grid;
+grid-template-columns:1.2fr 0.8fr;
+gap:20px;
+align-items:stretch;
+}
 
-    .hero-logo{
-      width:72px;
-      height:72px;
-      object-fit:contain;
-      margin-bottom:12px;
-    }
+.hero-main,
+.hero-side,
+.card,
+.wide-card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:24px;
+box-shadow:0 10px 28px rgba(0,0,0,0.04);
+}
 
-    h1{
-      margin:0;
-      font-size:48px;
-      color:var(--primary);
-      line-height:1.1;
-    }
+.hero-main{
+padding:44px 28px;
+}
 
-    .subtitle{
-      max-width:760px;
-      margin:18px 0 0;
-      font-size:20px;
-      color:var(--muted);
-    }
+.hero-side{
+padding:24px 22px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-align:center;
+background:linear-gradient(180deg,#ffffff 0%, #f3fbf8 100%);
+}
 
-    .hero-buttons{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:28px;
-      align-items:center;
-    }
+.hero-logo{
+width:72px;
+height:72px;
+object-fit:contain;
+margin-bottom:12px;
+}
 
-    .store-badge img{
-      height:60px;
-      display:block;
-    }
+h1{
+margin:0;
+font-size:48px;
+color:var(--primary);
+line-height:1.1;
+}
 
-    .hero-note{
-      margin-top:14px;
-      font-size:14px;
-      color:var(--muted);
-    }
+.subtitle{
+max-width:760px;
+margin:18px 0 0;
+font-size:20px;
+color:var(--muted);
+}
 
-    .hero-note a{
-      color:var(--primary);
-      font-weight:700;
-      text-decoration:none;
-    }
+.hero-buttons{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+margin-top:28px;
+align-items:center;
+}
 
-    .hero-note a:hover{
-      text-decoration:underline;
-    }
+.store-badge img{
+height:60px;
+display:block;
+}
 
-    .phone-mock{
-      width:210px;
-      max-width:100%;
-      margin:0 auto 16px;
-      border-radius:28px;
-      background:#0f172a;
-      padding:10px;
-      box-shadow:0 18px 36px rgba(15,118,110,0.12);
-    }
+.hero-note{
+margin-top:14px;
+font-size:14px;
+color:var(--muted);
+}
 
-    .phone-screen{
-      background:linear-gradient(180deg,#f5f8f7 0%, #e9f3f0 100%);
-      border-radius:22px;
-      min-height:380px;
-      padding:18px 14px;
-      text-align:left;
-      color:#0f172a;
-    }
+.hero-note a{
+color:var(--primary);
+font-weight:700;
+text-decoration:none;
+}
 
-    .phone-title{
-      text-align:center;
-      color:var(--primary);
-      font-weight:800;
-      font-size:20px;
-      margin-bottom:16px;
-    }
+.hero-note a:hover{
+text-decoration:underline;
+}
 
-    .mini-card{
-      background:#fff;
-      border:1px solid #dce9e5;
-      border-radius:14px;
-      padding:10px 12px;
-      margin-bottom:10px;
-      font-size:13px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.03);
-    }
+.phone-mock{
+width:210px;
+max-width:100%;
+margin:0 auto 16px;
+border-radius:28px;
+background:#0f172a;
+padding:10px;
+box-shadow:0 18px 36px rgba(15,118,110,0.12);
+}
 
-    .mini-row{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:center;
-    }
+.phone-screen{
+background:linear-gradient(180deg,#f5f8f7 0%, #e9f3f0 100%);
+border-radius:22px;
+min-height:380px;
+padding:18px 14px;
+text-align:left;
+color:#0f172a;
+}
 
-    .dot{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--primary);
-      display:inline-block;
-      margin-right:6px;
-    }
+.phone-title{
+text-align:center;
+color:var(--primary);
+font-weight:800;
+font-size:20px;
+margin-bottom:16px;
+}
 
-    .section{
-      margin-top:28px;
-    }
+.mini-card{
+background:#fff;
+border:1px solid #dce9e5;
+border-radius:14px;
+padding:10px 12px;
+margin-bottom:10px;
+font-size:13px;
+box-shadow:0 4px 12px rgba(0,0,0,0.03);
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:18px;
-    }
+.mini-row{
+display:flex;
+justify-content:space-between;
+gap:12px;
+align-items:center;
+}
 
-    .card{
-      padding:22px 18px;
-    }
+.dot{
+width:10px;
+height:10px;
+border-radius:50%;
+background:var(--primary);
+display:inline-block;
+margin-right:6px;
+}
 
-    .card h2,
-    .card h3,
-    .wide-card h2{
-      margin-top:0;
-      color:var(--primary);
-    }
+.section{
+margin-top:28px;
+}
 
-    .feature-icon{
-      font-size:30px;
-      margin-bottom:10px;
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:18px;
+}
 
-    .wide-card{
-      padding:24px 20px;
-    }
+.card{
+padding:22px 18px;
+}
 
-    .screens{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:16px;
-      margin-top:16px;
-    }
+.card h2,
+.card h3,
+.wide-card h2{
+margin-top:0;
+color:var(--primary);
+}
 
-    .screen-box{
-      border:1px dashed var(--border);
-      border-radius:18px;
-      background:var(--soft);
-      padding:24px 14px;
-      text-align:center;
-      color:var(--muted);
-      font-weight:600;
-      min-height:160px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-    }
+.feature-icon{
+font-size:30px;
+margin-bottom:10px;
+}
 
-    .screen-emoji{
-      font-size:28px;
-    }
+.wide-card{
+padding:24px 20px;
+}
 
-    .links{
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:14px;
-      margin-top:14px;
-    }
+.screens{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:16px;
+margin-top:16px;
+}
 
-    .link-box{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:18px 14px;
-      text-align:center;
-      text-decoration:none;
-      color:var(--text);
-      font-weight:700;
-      box-shadow:0 6px 20px rgba(0,0,0,0.03);
-    }
+.screen-box{
+border:1px dashed var(--border);
+border-radius:18px;
+background:var(--soft);
+padding:24px 14px;
+text-align:center;
+color:var(--muted);
+font-weight:600;
+min-height:160px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:8px;
+}
 
-    .link-box span{
-      display:block;
-      margin-top:6px;
-      color:var(--muted);
-      font-size:14px;
-      font-weight:500;
-    }
+.screen-emoji{
+font-size:28px;
+}
 
-    .mail-link{
-      color:inherit;
-      text-decoration:none;
-    }
+.links{
+display:grid;
+grid-template-columns:repeat(4, 1fr);
+gap:14px;
+margin-top:14px;
+}
 
-    .mail-link:hover{
-      text-decoration:underline;
-    }
+.link-box{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:16px;
+padding:18px 14px;
+text-align:center;
+text-decoration:none;
+color:var(--text);
+font-weight:700;
+box-shadow:0 6px 20px rgba(0,0,0,0.03);
+}
 
-    .footer{
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-      margin-top:30px;
-    }
+.link-box span{
+display:block;
+margin-top:6px;
+color:var(--muted);
+font-size:14px;
+font-weight:500;
+}
 
-    @media (max-width: 960px){
-      .hero{
-        grid-template-columns:1fr;
-      }
+.mail-link{
+color:inherit;
+text-decoration:none;
+}
 
-      .grid,
-      .screens,
-      .links{
-        grid-template-columns:1fr 1fr;
-      }
+.mail-link:hover{
+text-decoration:underline;
+}
 
-      h1{
-        font-size:40px;
-      }
-    }
+.footer{
+text-align:center;
+color:var(--muted);
+font-size:14px;
+margin-top:30px;
+}
 
-    @media (max-width: 640px){
-      .grid,
-      .screens,
-      .links{
-        grid-template-columns:1fr;
-      }
+@media (max-width: 960px){
+.hero{
+grid-template-columns:1fr;
+}
 
-      .hero-main{
-        padding:36px 20px;
-      }
+.grid,
+.screens,
+.links{
+grid-template-columns:1fr 1fr;
+}
 
-      h1{
-        font-size:33px;
-      }
+h1{
+font-size:40px;
+}
+}
 
-      .subtitle{
-        font-size:17px;
-      }
+@media (max-width: 640px){
+.grid,
+.screens,
+.links{
+grid-template-columns:1fr;
+}
 
-      .hero-buttons{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-    }
-  </style>
+.hero-main{
+padding:36px 20px;
+}
+
+h1{
+font-size:33px;
+}
+
+.subtitle{
+font-size:17px;
+}
+
+.hero-buttons{
+flex-direction:column;
+align-items:flex-start;
+}
+}
+
+</style>
 </head>
+
 <body>
-  <div class="wrap">
 
-    <div class="topbar">
-      <a class="brand" href="index.html">YOL</a>
-      <div class="nav">
-        <a href="support.html">Destek</a>
-        <a href="privacy.html">Gizlilik</a>
-        <a href="terms.html">Kullanım Şartları</a>
-        <a href="contact.html">İletişim</a>
-      </div>
-    </div>
+<div class="wrap">
 
-    <section class="hero">
-      <div class="hero-main">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-        <img
-          class="hero-logo"
-          src="https://cdn-icons-png.flaticon.com/512/833/833472.png"
-          alt="YOL logo"
-          style="width:64px; height:64px;"
-        >
-        <span style="font-size:40px;">🌙</span>
-      </div>
+<div class="topbar">
+<a class="brand" href="index.html">YOL</a>
 
-        <h1>YOL</h1>
+<div class="nav">
+<a href="support.html">Destek</a>
+<a href="privacy.html">Gizlilik</a>
+<a href="terms.html">Kullanım Şartları</a>
+<a href="contact.html">İletişim</a>
+</div>
+</div>
 
-        <p class="subtitle">
-          Bu yol bir hatırlayıştır. YOL, rabıta, zikir, murakabe ve günlük manevi
-          takibini daha sade, düzenli ve huzurlu şekilde sürdürebilmen için tasarlanmış
-          bir manevi takip uygulamasıdır.
-        </p>
+<section class="hero">
 
-        <div class="hero-buttons">
-          <a class="store-badge" href="#" aria-label="App Store">
-            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
-          </a>
+<div class="hero-main">
 
-          <a class="store-badge" href="#" aria-label="Google Play">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
-          </a>
-        </div>
+<div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+<img
+class="hero-logo"
+src="https://cdn-icons-png.flaticon.com/512/833/833472.png"
+alt="YOL logo"
+style="width:64px; height:64px;"
+>
+<span style="font-size:40px;">🌙</span>
+</div>
 
-        <div class="hero-note">
-          Mağaza bağlantıları yayın sonrası aktif bağlantılar ile güncellenecektir.
-        </div>
+<h1>YOL</h1>
 
-        <div class="hero-note">
-          Destek:
-          <a href="mailto:destek@yolapp.com.tr?subject=YOL%20Destek">destek@yolapp.com.tr</a>
-        </div>
-      </div>
+<p class="subtitle">
+Bu yol bir hatırlayıştır. YOL, rabıta, zikir, murakabe ve günlük manevi
+takibini daha sade, düzenli ve huzurlu şekilde sürdürebilmen için tasarlanmış
+bir manevi takip uygulamasıdır.
+</p>
 
-      <div class="hero-side">
-        <div class="phone-mock">
-          <div class="phone-screen">
-            <div class="phone-title">YOL</div>
+<div class="hero-buttons">
 
-            <div class="mini-card">
-              <div><span class="dot"></span>Bugünkü takip</div>
-            </div>
+<a class="store-badge" href="#" aria-label="App Store">
+<img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+</a>
 
-            <div class="mini-card">
-              <div class="mini-row">
-                <span>Rabıta</span>
-                <strong>✓</strong>
-              </div>
-            </div>
+<a class="store-badge" href="#" aria-label="Google Play">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+</a>
 
-            <div class="mini-card">
-              <div class="mini-row">
-                <span>Zikir</span>
-                <strong>245 / 500</strong>
-              </div>
-            </div>
+</div>
 
-            <div class="mini-card">
-              <div class="mini-row">
-                <span>Murakabe</span>
-                <strong>15 dk</strong>
-              </div>
-            </div>
+<div class="hero-note">
+Mağaza bağlantıları yayın sonrası aktif bağlantılar ile güncellenecektir.
+</div>
 
-            <div class="mini-card">
-              <div class="mini-row">
-                <span>Notlar</span>
-                <strong>2 kayıt</strong>
-              </div>
-            </div>
+<div class="hero-note">
+Destek:
+<a href="mailto:destek@yolapp.com.tr?subject=YOL%20Destek">destek@yolapp.com.tr</a>
+</div>
 
-            <div class="mini-card">
-              <div class="mini-row">
-                <span>Oku &amp; Ezberle</span>
-                <strong>Devam</strong>
-              </div>
-            </div>
-          </div>
-        </div>
+</div>
 
-        <strong style="color:var(--primary); font-size:18px;">Sade. Düzenli. Huzurlu.</strong>
-      </div>
-    </section>
+<div class="hero-side">
 
-    <section class="section grid">
-      <div class="card">
-        <div class="feature-icon">📿</div>
-        <h3>Rabıta • Zikir • Murakabe</h3>
-        <p>Günlük manevi takibini istikrarlı biçimde sürdürebilmen için sade takip alanları sunar.</p>
-      </div>
+<div class="phone-mock">
 
-      <div class="card">
-        <div class="feature-icon">📚</div>
-        <h3>Oku &amp; Ezberle</h3>
-        <p>Kur’an-ı Kerim, günlük dualar ve salavat içeriklerini tekrar edip ilerlemeni takip edebilirsin.</p>
-      </div>
+<div class="phone-screen">
 
-      <div class="card">
-        <div class="feature-icon">📝</div>
-        <h3>Notlar ve Kişisel Alanlar</h3>
-        <p>Günlük notlarını, hedeflerini ve kişisel takiplerini tek bir yerde düzenli biçimde tutabilirsin.</p>
-      </div>
-    </section>
+<div class="phone-title">YOL</div>
 
-    <section class="section wide-card">
-      <h2>Öne Çıkan Özellikler</h2>
-      <p>
-        Ders Takip, sayaç sistemi, zikirmatik, günlük dualar, Risale-i Kudsiye,
-        Altın Silsile, istatistik görünümü ve kişisel alanlar ile YOL uygulaması
-        sade ama güçlü bir kullanım deneyimi sunar.
-      </p>
-    </section>
+<div class="mini-card">
+<div><span class="dot"></span>Bugünkü takip</div>
+</div>
 
-    <section class="section wide-card">
-      <h2>Ekran Görüntüleri</h2>
-      <p>Uygulama mağaza bağlantıları aktif olduğunda gerçek ekran görüntüleri buraya eklenecek.</p>
+<div class="mini-card">
+<div class="mini-row">
+<span>Rabıta</span>
+<strong>✓</strong>
+</div>
+</div>
 
-      <div class="screens">
-        <div class="screen-box">
-          <div class="screen-emoji">🏠</div>
-          <div>Ana Menü Görseli</div>
-        </div>
+<div class="mini-card">
+<div class="mini-row">
+<span>Zikir</span>
+<strong>245 / 500</strong>
+</div>
+</div>
 
-        <div class="screen-box">
-          <div class="screen-emoji">📅</div>
-          <div>Ders Takip Görseli</div>
-        </div>
+<div class="mini-card">
+<div class="mini-row">
+<span>Murakabe</span>
+<strong>15 dk</strong>
+</div>
+</div>
 
-        <div class="screen-box">
-          <div class="screen-emoji">⏱</div>
-          <div>Sayaç / Zikir Görseli</div>
-        </div>
-      </div>
-    </section>
+<div class="mini-card">
+<div class="mini-row">
+<span>Notlar</span>
+<strong>2 kayıt</strong>
+</div>
+</div>
 
-    <section class="section">
-      <div class="links">
-        <a class="link-box" href="support.html">
-          Destek
-          <span>Sık sorulan sorular ve yardım</span>
-        </a>
+<div class="mini-card">
+<div class="mini-row">
+<span>Oku &amp; Ezberle</span>
+<strong>Devam</strong>
+</div>
+</div>
 
-        <a class="link-box" href="privacy.html">
-          Gizlilik
-          <span>Gizlilik politikası</span>
-        </a>
+</div>
 
-        <a class="link-box" href="terms.html">
-          Şartlar
-          <span>Kullanım koşulları</span>
-        </a>
+</div>
 
-        <a class="link-box" href="contact.html">
-          İletişim
-          <span>destek@yolapp.com.tr</span>
-        </a>
-      </div>
-    </section>
+<strong style="color:var(--primary); font-size:18px;">Sade. Düzenli. Huzurlu.</strong>
 
-    <div class="footer">
-      © 2026 YOL • yolapp.com.tr
-    </div>
+</div>
 
-  </div>
+</section>
+
+<section class="section grid">
+
+<div class="card">
+<div class="feature-icon">📿</div>
+<h3>Rabıta • Zikir • Murakabe</h3>
+<p>Günlük manevi takibini istikrarlı biçimde sürdürebilmen için sade takip alanları sunar.</p>
+</div>
+
+<div class="card">
+<div class="feature-icon">📚</div>
+<h3>Oku &amp; Ezberle</h3>
+<p>Kur’an-ı Kerim, günlük dualar ve salavat içeriklerini tekrar edip ilerlemeni takip edebilirsin.</p>
+</div>
+
+<div class="card">
+<div class="feature-icon">📝</div>
+<h3>Notlar ve Kişisel Alanlar</h3>
+<p>Günlük notlarını, hedeflerini ve kişisel takiplerini tek bir yerde düzenli biçimde tutabilirsin.</p>
+</div>
+
+</section>
+
+<section class="section wide-card">
+
+<h2>Öne Çıkan Özellikler</h2>
+
+<p>
+Ders Takip, sayaç sistemi, zikirmatik, günlük dualar, Risale-i Kudsiye,
+Altın Silsile, istatistik görünümü ve kişisel alanlar ile YOL uygulaması
+sade ama güçlü bir kullanım deneyimi sunar.
+</p>
+
+</section>
+
+<section class="section wide-card">
+
+<h2>Ekran Görüntüleri</h2>
+
+<p>
+Uygulama mağaza bağlantıları aktif olduğunda gerçek ekran görüntüleri buraya eklenecektir.
+</p>
+
+<div class="screens">
+
+<div class="screen-box">
+<div class="screen-emoji">🏠</div>
+<div>Ana Menü Görseli</div>
+</div>
+
+<div class="screen-box">
+<div class="screen-emoji">📅</div>
+<div>Ders Takip Görseli</div>
+</div>
+
+<div class="screen-box">
+<div class="screen-emoji">⏱</div>
+<div>Sayaç / Zikir Görseli</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="links">
+
+<a class="link-box" href="support.html">
+Destek
+<span>Sık sorulan sorular ve yardım</span>
+</a>
+
+<a class="link-box" href="privacy.html">
+Gizlilik
+<span>Gizlilik politikası</span>
+</a>
+
+<a class="link-box" href="terms.html">
+Şartlar
+<span>Kullanım koşulları</span>
+</a>
+
+<a class="link-box" href="contact.html">
+İletişim
+<span>destek@yolapp.com.tr</span>
+</a>
+
+</div>
+
+</section>
+
+<div class="footer">
+© 2026 YOL • yolapp.com.tr
+</div>
+
+</div>
+
 </body>
 </html>
