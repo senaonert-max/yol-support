@@ -247,7 +247,7 @@ margin-top:16px;
 border:1px dashed var(--border);
 border-radius:18px;
 background:var(--soft);
-padding:24px 14px;
+padding:14px 14px 18px;
 text-align:center;
 color:var(--muted);
 font-weight:600;
@@ -255,8 +255,25 @@ min-height:160px;
 display:flex;
 flex-direction:column;
 align-items:center;
-justify-content:center;
-gap:8px;
+justify-content:flex-start;
+gap:12px;
+overflow:hidden;
+}
+
+.screen-box img{
+width:100%;
+height:auto;
+display:block;
+border-radius:14px;
+border:1px solid #d7e4e0;
+box-shadow:0 6px 18px rgba(0,0,0,0.04);
+background:#fff;
+}
+
+.screen-label{
+font-size:18px;
+font-weight:700;
+color:var(--text);
 }
 
 .screen-emoji{
@@ -507,18 +524,18 @@ Aşağıdaki alanlar YOL uygulamasının temel bölümlerini temsil eder.
 <div class="screens">
 
 <div class="screen-box">
-<div class="screen-emoji">🏠</div>
-<div>Ana Menü</div>
+<img src="assets/ana-menu.jpeg" alt="YOL Ana Menü ekran görüntüsü">
+<div class="screen-label">Ana Menü</div>
 </div>
 
 <div class="screen-box">
-<div class="screen-emoji">📅</div>
-<div>Ders Takip</div>
+<img src="assets/ders-takip.jpeg" alt="YOL Ders Takip ekran görüntüsü">
+<div class="screen-label">Ders Takip</div>
 </div>
 
 <div class="screen-box">
-<div class="screen-emoji">⏱</div>
-<div>Sayaç &amp; Zikirmatik</div>
+<img src="assets/sayac.jpeg" alt="YOL Sayaç ekran görüntüsü">
+<div class="screen-label">Sayaç</div>
 </div>
 
 </div>
